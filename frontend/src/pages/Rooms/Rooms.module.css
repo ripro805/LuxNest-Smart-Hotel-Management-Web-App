@@ -1,0 +1,138 @@
+.container {
+    padding: 16px;
+}
+
+.filters {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.flexSpacer {
+    flex: 1;
+}
+
+.input {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    outline: none;
+}
+
+.input:focus {
+    border-color: #007bff;
+}
+
+.button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: #007bff;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.cardsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.roomCard {
+    background-color: #fff;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.roomCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.roomHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.status {
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: white;
+    text-transform: capitalize;
+}
+
+.available { background-color: #28a745; }
+.booked { background-color: #ffc107; }
+.occupied { background-color: #dc3545; }
+.maintenance { background-color: #6c757d; }
+
+.cardActions {
+    margin-top: 12px;
+    display: flex;
+    gap: 12px;
+}
+
+.icon {
+    cursor: pointer;
+    font-size: 18px;
+    color: #007bff;
+    transition: color 0.2s;
+}
+
+.icon:hover {
+    color: #0056b3;
+}
+
+/* Modal + Form styles (previous) */
+.modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+.modalContent {
+    background-color: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    width: 500px; max-width: 90%;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.formRow {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+.formRow label {
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #333;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
