@@ -1,7 +1,7 @@
 .container {
     padding: 24px;
     font-family: 'Segoe UI', sans-serif;
-    background: #0e141b;
+    background: #0f172a;
     min-height: 100vh;
     color: #e6eef6;
 }
@@ -11,6 +11,7 @@
     font-weight: 600;
     color: #ffffff;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .controls {

@@ -13,29 +13,20 @@ export default function App() {
     const [collapsed, setCollapsed] = useState(false);
 
     return (
-        <>
-            <div className="app-root">
-                <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
-                <div
-                    style={{
-                        flex: 1,
-                        padding: 20,
-                        marginLeft: collapsed ? 60 : 220, /* auto adjust page width */
-                        transition: 'margin-left 0.3s'
-                    }}
-                >
-                    <main className={`main-content ${collapsed ? 'collapsed' : ''}`}>
-                        <Routes>
-                            <Route path="/" element={<Dashboard />} />
-                            <Route path="/customers" element={<Guests />} />
-                            <Route path="/staffs" element={<Staffs />} />
-                            <Route path="/rooms" element={<Rooms />} />
-                            <Route path="/booking" element={<Booking />} />
-                            <Route path="/staying" element={<Staying />} />
-                        </Routes>
-                    </main>
-                </div>
+        <div className="app-root">
+            <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
+
+            {/* 🔹 Page content area */}
+            <div className={`main-area ${collapsed ? 'collapsed' : ''}`}>
+                <Routes>
+                    <Route path="/" element={<Dashboard />} />
+                    <Route path="/customers" element={<Guests />} />
+                    <Route path="/staffs" element={<Staffs />} />
+                    <Route path="/rooms" element={<Rooms />} />
+                    <Route path="/booking" element={<Booking />} />
+                    <Route path="/staying" element={<Staying />} />
+                </Routes>
             </div>
-        </>
+        </div>
     );
 }

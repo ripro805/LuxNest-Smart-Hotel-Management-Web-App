@@ -63,7 +63,7 @@ export default function Rooms() {
 
     return (
         <div className={styles.container}>
-            <h2>Rooms</h2>
+            <h2 className={styles.header}>Rooms</h2>
 
             <div className={styles.filters}>
                 <input className={styles.input} placeholder="Search room number or notes" value={search} onChange={e => setSearch(e.target.value)} />

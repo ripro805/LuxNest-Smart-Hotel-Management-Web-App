@@ -12,12 +12,14 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .title {
     font-size: 26px;
     font-weight: 600;
     color: #f1f5f9;
+    text-align: center;
 }
 
 .addBtn {
