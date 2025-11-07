@@ -8,7 +8,7 @@ export default function Sidebar() {
 
     const menuItems = [
         { to: '/', label: 'Dashboard', icon: <FiHome /> },
-        { to: '/customers', label: 'Customers', icon: <FiUsers /> },
+        { to: '/customers', label: 'Guests', icon: <FiUsers /> },
         { to: '/staffs', label: 'Staffs', icon: <FiUserPlus /> },
         { to: '/rooms', label: 'Rooms', icon: <FiBox /> },
         { to: '/booking', label: 'Booking', icon: <FiCalendar /> },
@@ -18,7 +18,7 @@ export default function Sidebar() {
     return (
         <aside className={`${styles.sidebar} ${collapsed ? styles.collapsed : ''}`}>
             <div className={styles.top}>
-                <div className={styles.brand}>{!collapsed ? 'HotelMgmt' : ''}</div>
+                <div className={styles.brand}>{!collapsed ? 'Luxnest' : ''}</div>
                 <button className={styles.toggleBtn} onClick={() => setCollapsed(!collapsed)}>
                     <FiMenu />
                 </button>

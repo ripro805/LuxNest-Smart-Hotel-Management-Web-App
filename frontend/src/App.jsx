@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Dashboard from './pages/Dashboard/Dashboard.jsx';
-import Customers from './pages/Customers/Customers.jsx';
+import Guests from './pages/Guests/Guests.jsx';
 import Staffs from './pages/Staffs/Staffs.jsx';
 import Rooms from './pages/Rooms/Rooms.jsx';
 import Booking from './pages/Booking/Booking.jsx';
@@ -26,7 +26,7 @@ export default function App() {
                 <main className={`main-content ${collapsed ? 'collapsed' : ''}`}>
                 <Routes>
                     <Route path="/" element={<Dashboard />} />
-                    <Route path="/customers" element={<Customers />} />
+                    <Route path="/customers" element={<Guests />} />
                     <Route path="/staffs" element={<Staffs />} />
                     <Route path="/rooms" element={<Rooms />} />
                     <Route path="/booking" element={<Booking />} />

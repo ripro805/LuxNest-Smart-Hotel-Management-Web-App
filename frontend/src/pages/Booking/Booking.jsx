@@ -99,12 +99,12 @@ export default function Booking() {
                                 className={`${styles.tabButton} ${customerType === 'existing' ? styles.activeTab : ''}`}
                                 onClick={() => setCustomerType('existing')}
                                 type="button"
-                            >Existing Customer</button>
+                            >Existing Guests</button>
                             <button
                                 className={`${styles.tabButton} ${customerType === 'new' ? styles.activeTab : ''}`}
                                 onClick={() => setCustomerType('new')}
                                 type="button"
-                            >New Customer</button>
+                            >New Guests</button>
                         </div>
 
                         <form onSubmit={handleSubmit}>

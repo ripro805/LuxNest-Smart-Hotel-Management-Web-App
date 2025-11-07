@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { api } from '../../api.js';
-import styles from './Customers.module.css';
+import { api } from '../../api/api.js';
+import styles from './Guests.module.css';
 import { FiEdit, FiTrash2, FiInfo } from 'react-icons/fi';
 
-export default function Customers() {
+export default function Guests() {
     const [customers, setCustomers] = useState([]);
     const [search, setSearch] = useState('');
     const [statusFilter, setStatusFilter] = useState('');
@@ -66,7 +66,7 @@ export default function Customers() {
 
     return (
         <div className={styles.page}>
-            <h2 className={styles.pageTitle}>👥 Customers</h2>
+            <h2 className={styles.pageTitle}>👥 Guests</h2>
 
             {/* Controls */}
             <div className={styles.controls}>
@@ -88,7 +88,7 @@ export default function Customers() {
                 </select>
                 <button className={styles.primaryBtn} onClick={load}>Search</button>
                 <div style={{ flex: 1 }} />
-                <button className={styles.successBtn} onClick={openNew}>+ New Customer</button>
+                <button className={styles.successBtn} onClick={openNew}>+ New Guests</button>
             </div>
 
             {/* Card Grid */}
