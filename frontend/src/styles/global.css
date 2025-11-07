@@ -1,6 +1,6 @@
 :root {
-    --sidebar-width: 220px;
-    --sidebar-collapsed-width: 60px;
+    --sidebar-width: auto;
+    --sidebar-collapsed-width: auto;
 }
 
 /* app layout */

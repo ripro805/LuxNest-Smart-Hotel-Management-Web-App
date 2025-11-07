@@ -1,52 +1,315 @@
-.page { padding: 20px; font-family: 'Segoe UI', sans-serif; background: #f9f9f9; }
-.pageTitle { font-size: 28px; margin-bottom: 20px; font-weight: 600; color: #333; }
+/* ====== Page Layout ====== */
+.page {
+    padding: 24px;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background: #0f1116;
+    color: #e0e0e0;
+    min-height: 100vh;
+}
 
-.controls { display: flex; gap: 10px; margin-bottom: 20px; align-items: center; flex-wrap: wrap; }
-.input { padding: 10px 12px; border: 1px solid #ccc; border-radius: 8px; flex-shrink: 0; min-width: 180px; }
+.pageTitle {
+    font-size: 28px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.15);
+}
 
-.primaryBtn { background: #3498db; color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: 500; transition: 0.2s; }
-.primaryBtn:hover { background: #217dbb; }
-.successBtn { background: #2ecc71; color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: 500; transition: 0.2s; }
-.successBtn:hover { background: #27a65a; }
-.cancelBtn { background: #7f8c8d; color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: 500; transition: 0.2s; }
-.cancelBtn:hover { background: #636e72; }
-
-.cardsContainer { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
-.customerCard {
-    background: white;
-    border-radius: 12px;
+/* ====== Controls Bar ====== */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    background: #1a1d24;
     padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+    margin-bottom: 20px;
+}
+
+.input {
+    background: #222831;
+    color: #e0e0e0;
+    border: 1px solid #2e3440;
+    border-radius: 8px;
+    padding: 10px 12px;
+    outline: none;
+    transition: border 0.2s, background 0.2s;
+}
+
+.input:focus {
+    border-color: #00bcd4;
+    background: #2a303b;
+}
+
+.primaryBtn,
+.successBtn,
+.cancelBtn {
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.primaryBtn {
+    background: #007bff;
+    color: white;
+}
+
+.primaryBtn:hover {
+    background: #0062cc;
+    transform: translateY(-2px);
+}
+
+.successBtn {
+    background: #28a745;
+    color: white;
+}
+
+.successBtn:hover {
+    background: #218838;
+    transform: translateY(-2px);
+}
+
+.cancelBtn {
+    background: #6c757d;
+    color: white;
+}
+
+.cancelBtn:hover {
+    background: #5a6268;
+    transform: translateY(-2px);
+}
+
+/* ====== Date Filter ====== */
+.dateFilter {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #222831;
+    border: 1px solid #2e3440;
+    border-radius: 8px;
+    padding-left: 36px;
+    padding-right: 28px;
+}
+
+.calendarIcon {
+    position: absolute;
+    left: 10px;
+    font-size: 18px;
+    color: #00bcd4;
+}
+
+.dateInput {
+    background: transparent;
+    border: none;
+    color: #e0e0e0;
+    padding: 8px;
+    outline: none;
+    cursor: pointer;
+}
+
+.clearDateBtn {
+    position: absolute;
+    right: 6px;
+    background: none;
+    border: none;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.clearDateBtn:hover {
+    color: #fff;
+}
+
+/* ====== List Table ====== */
+.listContainer {
+    background: #1a1d24;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    overflow-x: auto;
+    animation: fadeIn 0.4s ease;
+}
+
+.listTable {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+}
+
+.listTable th,
+.listTable td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #2e3440;
+    text-align: left;
+}
+
+.listTable th {
+    background: #222831;
+    color: #00bcd4;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.listTable tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transition: background 0.2s;
+}
+
+/* ====== Status Pills ====== */
+.status {
+    padding: 4px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.booked {
+    background: #665c00;
+    color: #ffe27a;
+}
+
+.staying {
+    background: #145c32;
+    color: #6af58f;
+}
+
+.checked-out {
+    background: #3a3a3a;
+    color: #ccc;
+}
+
+/* ====== Icons ====== */
+.icon {
+    font-size: 18px;
+    color: #00bcd4;
+    cursor: pointer;
+    margin-right: 8px;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.icon:hover {
+    color: #03e9f4;
+    transform: scale(1.1);
+}
+
+/* ====== Modal Styling ====== */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    animation: fadeIn 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.modalContent {
+    background: #1e2129;
+    color: #e0e0e0;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+    width: clamp(400px, 50%, 800px);
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: scaleUp 0.3s ease;
+}
+
+.modalContent h3,
+.modalContent h4 {
+    color: #00bcd4;
+}
+
+.formRow {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    transition: transform 0.2s, box-shadow 0.2s;
+    margin-bottom: 12px;
 }
-.customerCard:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.12); }
 
-.cardContent { display: flex; flex-direction: column; gap: 6px; }
-.cardHeader { display: flex; justify-content: space-between; align-items: center; }
-.cardHeader strong { font-size: 18px; color: #222; }
-.cardBody small { color: #555; }
-.cardBody p { margin: 4px 0 0; color: #333; }
-.note { font-style: italic; color: #666; }
+.formRow label {
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #ccc;
+}
 
-.status { padding: 4px 10px; border-radius: 10px; font-size: 12px; text-transform: capitalize; font-weight: 500; }
-.booked { background: #ffe6b3; color: #b37400; }
-.staying { background: #d9f2d9; color: #267326; }
-.checked-out { background: #f2f2f2; color: #555; }
+.modalActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 16px;
+}
 
-.cardActions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 10px; }
-.icon { font-size: 18px; color: #3498db; cursor: pointer; transition: color 0.2s; }
-.icon:hover { color: #217dbb; }
+/* ====== Inner Table for Details ====== */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+}
 
-/* Modal + Form */
-.modal { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 10; }
-.modalContent { background: white; padding: 24px; border-radius: 12px; min-width: 400px; max-height: 90vh; overflow-y: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
-.formRow { display: flex; flex-direction: column; margin-bottom: 12px; }
-.formRow label { margin-bottom: 6px; font-weight: 500; color: #333; }
-.modalActions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 16px; }
+.table th,
+.table td {
+    padding: 10px;
+    border-bottom: 1px solid #333;
+}
 
-.table { width: 100%; border-collapse: collapse; margin-top: 12px; }
-.table th, .table td { padding: 10px; border-bottom: 1px solid #eee; text-align: left; }
-.table th { font-weight: 600; color: #333; background: #f5f5f5; }
+.table th {
+    color: #00bcd4;
+    background: #222831;
+    font-weight: 600;
+}
+
+.table tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* ====== Animations ====== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .modalContent {
+        width: 90%;
+        max-height: 85vh;
+    }
+
+    .listTable {
+        font-size: 14px;
+    }
+
+    .pageTitle {
+        font-size: 22px;
+    }
+}
