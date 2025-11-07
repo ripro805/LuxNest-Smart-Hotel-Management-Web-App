@@ -1,7 +1,7 @@
 -- init_db.sql
-DROP DATABASE IF EXISTS hotel_management;
-CREATE DATABASE hotel_management CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE hotel_management;
+DROP DATABASE IF EXISTS luxnest;
+CREATE DATABASE luxnest CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE luxnest;
 
 -- customers
 CREATE TABLE customers (
@@ -58,10 +58,10 @@ INSERT INTO rooms (room_number, type, status, price) VALUES
 ('202','suite','available',5000.00);
 
 INSERT INTO staffs (name, email, phone, designation, joined_at) VALUES
-('Rahim','rahim@example.com','01710000001','manager','2024-01-10'),
-('Karim','karim@example.com','01710000002','staff','2024-03-01'),
-('Rina','rina@example.com','01710000003','cleaner','2024-05-12'),
-('Jamil','jamil@example.com','01710000004','guard','2024-02-20');
+('Rizvi','rizvi@example.com','01710000001','manager','2024-01-10'),
+('Nahid','nahid@example.com','01710000002','staff','2024-03-01'),
+('Nokib','nokib@example.com','01710000003','cleaner','2024-05-12'),
+('Sakib','sakib@example.com','01710000004','guard','2024-02-20');
 
 INSERT INTO customers (name, email, phone, status) VALUES
 ('Tarek','tarek@example.com','01810000001','booked'),
