@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Staffs.module.css";
 import {
     getStaffs,
@@ -6,6 +6,7 @@ import {
     updateStaff,
     deleteStaff,
 } from "../../api/staffsApi.js";
+import { FiPlus, FiEdit2, FiTrash2 } from "react-icons/fi";
 
 export default function Staffs() {
     const [staffs, setStaffs] = useState([]);
@@ -18,14 +19,23 @@ export default function Staffs() {
     });
     const [editingId, setEditingId] = useState(null);
     const [showForm, setShowForm] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         loadStaffs();
     }, []);
 
     async function loadStaffs() {
-        const data = await getStaffs();
-        setStaffs(data);
+        setLoading(true);
+        try {
+            const data = await getStaffs();
+            setStaffs(data);
+        } catch (err) {
+            console.error(err);
+            alert("Failed to load staff data.");
+        } finally {
+            setLoading(false);
+        }
     }
 
     function handleChange(e) {
@@ -46,13 +56,15 @@ export default function Staffs() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        if (editingId) {
-            await updateStaff(editingId, formData);
-        } else {
-            await addStaff(formData);
+        try {
+            if (editingId) await updateStaff(editingId, formData);
+            else await addStaff(formData);
+            setShowForm(false);
+            loadStaffs();
+        } catch (err) {
+            console.error(err);
+            alert("Error saving staff data");
         }
-        setShowForm(false);
-        loadStaffs();
     }
 
     function handleEdit(staff) {
@@ -76,60 +88,70 @@ export default function Staffs() {
 
     return (
         <div className={styles.container}>
-            <h2 className={styles.title}>Staff Management</h2>
-            <button className={styles.addBtn} onClick={handleAddClick}>
-                + Add Staff
-            </button>
+            <div className={styles.header}>
+                <h2 className={styles.title}>👩‍💼 Staff Management</h2>
+                <button className={styles.addBtn} onClick={handleAddClick}>
+                    <FiPlus /> Add Staff
+                </button>
+            </div>
 
-            <table className={styles.table}>
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Designation</th>
-                    <th>Joined At</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                {staffs.map((s) => (
-                    <tr key={s.id}>
-                        <td>{s.name}</td>
-                        <td>{s.email}</td>
-                        <td>{s.phone}</td>
-                        <td>{s.designation}</td>
-                        <td>{s.joined_at}</td>
-                        <td>
-                            <button
-                                className={styles.editBtn}
-                                onClick={() => handleEdit(s)}
-                            >
-                                Edit
-                            </button>
-                            <button
-                                className={styles.deleteBtn}
-                                onClick={() => handleDelete(s.id)}
-                            >
-                                Delete
-                            </button>
-                        </td>
-                    </tr>
-                ))}
-                {staffs.length === 0 && (
-                    <tr>
-                        <td colSpan="6" style={{ textAlign: "center" }}>
-                            No staff found
-                        </td>
-                    </tr>
-                )}
-                </tbody>
-            </table>
+            {loading ? (
+                <div className={styles.loading}>Loading...</div>
+            ) : (
+                <div className={styles.tableContainer}>
+                    <table className={styles.table}>
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Designation</th>
+                            <th>Joined</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {staffs.map((s) => (
+                            <tr key={s.id}>
+                                <td>{s.name}</td>
+                                <td>{s.email}</td>
+                                <td>{s.phone}</td>
+                                <td>{s.designation}</td>
+                                <td>
+                                    {s.joined_at
+                                        ? new Date(s.joined_at).toISOString().split("T")[0]
+                                        : "N/A"}
+                                </td>
+                                <td>
+                                    <FiEdit2
+                                        className={`${styles.icon} ${styles.editIcon}`}
+                                        title="Edit"
+                                        onClick={() => handleEdit(s)}
+                                    />
+                                    <FiTrash2
+                                        className={`${styles.icon} ${styles.deleteIcon}`}
+                                        title="Delete"
+                                        onClick={() => handleDelete(s.id)}
+                                    />
+                                </td>
+                            </tr>
+                        ))}
+                        {staffs.length === 0 && (
+                            <tr>
+                                <td colSpan="6" style={{ textAlign: "center", opacity: 0.7 }}>
+                                    No staff found
+                                </td>
+                            </tr>
+                        )}
+                        </tbody>
+                    </table>
+                </div>
+            )}
 
             {showForm && (
                 <div className={styles.modalOverlay}>
                     <div className={styles.modal}>
-                        <h3>{editingId ? "Edit Staff" : "Add Staff"}</h3>
+                        <h3>{editingId ? "Edit Staff" : "Add New Staff"}</h3>
                         <form onSubmit={handleSubmit} className={styles.form}>
                             <input
                                 type="text"
@@ -170,15 +192,11 @@ export default function Staffs() {
                                 onChange={handleChange}
                             />
                             <div className={styles.formActions}>
+                                <button type="button" onClick={() => setShowForm(false)} className={styles.cancelBtn}>
+                                    Cancel
+                                </button>
                                 <button type="submit" className={styles.saveBtn}>
                                     Save
-                                </button>
-                                <button
-                                    type="button"
-                                    className={styles.cancelBtn}
-                                    onClick={() => setShowForm(false)}
-                                >
-                                    Cancel
                                 </button>
                             </div>
                         </form>

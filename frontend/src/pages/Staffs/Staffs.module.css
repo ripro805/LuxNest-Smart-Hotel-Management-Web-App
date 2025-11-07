@@ -1,112 +1,139 @@
 .container {
-    padding: 24px;
-    font-family: 'Segoe UI', sans-serif;
-    background: #f9f9f9;
+    background: #0f172a;
+    color: #e2e8f0;
     min-height: 100vh;
+    padding: 24px;
+    font-family: "Segoe UI", sans-serif;
+    transition: all 0.3s ease;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .title {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 600;
-    color: #333;
-    margin-bottom: 16px;
+    color: #f1f5f9;
 }
 
 .addBtn {
-    background: #2ecc71;
-    color: #fff;
+    background: linear-gradient(135deg, #10b981, #059669);
     border: none;
-    padding: 10px 16px;
+    color: white;
+    padding: 10px 18px;
     border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
-    margin-bottom: 16px;
-    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.addBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
 }
 
-.addBtn:hover {
-    background: #27ae60;
+.tableContainer {
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    animation: fadeIn 0.5s ease;
 }
 
 .table {
     width: 100%;
     border-collapse: collapse;
-    background: #fff;
-    border-radius: 12px;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
 .table th, .table td {
-    padding: 12px 16px;
-    text-align: left;
+    padding: 14px 16px;
     font-size: 14px;
 }
 
 .table th {
-    background: #f5f5f5;
-    font-weight: 600;
-    color: #555;
+    background: #334155;
+    color: #cbd5e1;
+    text-align: left;
 }
 
 .table tr:nth-child(even) {
-    background: #fafafa;
+    background: #1e293b;
+}
+.table tr:nth-child(odd) {
+    background: #273449;
 }
 
-.editBtn, .deleteBtn {
-    border: none;
-    padding: 6px 12px;
-    border-radius: 6px;
+.table tr:hover {
+    background: #334155;
+    transition: background 0.2s ease;
+}
+
+.icon {
     cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
-    margin-right: 6px;
-    transition: background 0.2s;
+    font-size: 18px;
+    margin-right: 10px;
+    transition: transform 0.2s, color 0.2s;
+}
+.icon:hover {
+    transform: scale(1.1);
 }
 
-.editBtn {
-    background: #f1c40f;
-    color: #fff;
+.editIcon {
+    color: #facc15;
+}
+.editIcon:hover {
+    color: #eab308;
 }
 
-.editBtn:hover {
-    background: #d4ac0d;
+.deleteIcon {
+    color: #ef4444;
+}
+.deleteIcon:hover {
+    color: #dc2626;
 }
 
-.deleteBtn {
-    background: #e74c3c;
-    color: #fff;
-}
-
-.deleteBtn:hover {
-    background: #c0392b;
+.loading {
+    text-align: center;
+    padding: 40px;
+    font-size: 18px;
+    opacity: 0.8;
 }
 
 /* Modal */
 .modalOverlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.6);
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10;
+    z-index: 100;
+    animation: fadeIn 0.3s ease;
 }
 
 .modal {
-    background: #fff;
+    background: #1e293b;
     padding: 24px;
     border-radius: 12px;
-    width: 400px;
+    min-width: 400px;
     max-width: 90%;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    animation: scaleIn 0.3s ease;
 }
 
 .modal h3 {
+    text-align: center;
     margin-bottom: 16px;
     font-size: 20px;
-    color: #333;
-    text-align: center;
+    color: #f8fafc;
 }
 
 .form {
@@ -115,17 +142,21 @@
     gap: 12px;
 }
 
-.form input, .form select {
+.form input,
+.form select {
     padding: 10px 12px;
     border-radius: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid #475569;
+    background: #0f172a;
+    color: #f8fafc;
     font-size: 14px;
-    outline: none;
     transition: border-color 0.2s;
 }
 
-.form input:focus, .form select:focus {
-    border-color: #3498db;
+.form input:focus,
+.form select:focus {
+    border-color: #38bdf8;
+    outline: none;
 }
 
 .formActions {
@@ -136,29 +167,39 @@
 }
 
 .saveBtn {
-    background: #3498db;
+    background: #2563eb;
     color: #fff;
     border: none;
     padding: 10px 16px;
     border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
+    transition: background 0.2s;
 }
-
 .saveBtn:hover {
-    background: #2980b9;
+    background: #1d4ed8;
 }
 
 .cancelBtn {
-    background: #7f8c8d;
+    background: #64748b;
     color: #fff;
     border: none;
     padding: 10px 16px;
     border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
+    transition: background 0.2s;
+}
+.cancelBtn:hover {
+    background: #475569;
 }
 
-.cancelBtn:hover {
-    background: #626d70;
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes scaleIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
