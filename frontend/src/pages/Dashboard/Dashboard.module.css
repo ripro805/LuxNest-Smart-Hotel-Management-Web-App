@@ -1,64 +1,77 @@
 .container {
     padding: 24px;
     font-family: 'Segoe UI', sans-serif;
-    background: #f9f9f9;
+    background: #0f172a; /* dark navy background */
     min-height: 100vh;
+    color: #e2e8f0;
 }
 
 .title {
     font-size: 28px;
     font-weight: 600;
-    color: #333;
+    color: #f8fafc;
     margin-bottom: 24px;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
 }
 
 .card {
-    background: #fff;
+    background: rgba(255, 255, 255, 0.06);
     padding: 24px 16px;
-    border-radius: 12px;
-    border-left: 6px solid #3498db; /* dynamic via inline style */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border-radius: 14px;
+    border-left: 6px solid #3498db; /* dynamic color inline from component */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    backdrop-filter: blur(12px);
 }
 
 .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
 .cardIcon {
-    font-size: 28px;
-    color: inherit;
+    font-size: 32px;
+    color: #60a5fa;
     margin-bottom: 12px;
+    transition: color 0.3s ease;
+}
+
+.card:hover .cardIcon {
+    color: #93c5fd;
 }
 
 .card h3 {
     font-size: 16px;
     font-weight: 600;
-    margin-bottom: 8px;
-    color: #555;
+    margin-bottom: 6px;
+    color: #cbd5e1;
 }
 
 .card p {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 700;
-    color: #222;
+    color: #f1f5f9;
     margin: 0;
 }
 
-.loading, .error {
+.loading,
+.error {
     font-size: 18px;
-    color: #555;
+    color: #94a3b8;
     text-align: center;
     margin-top: 50px;
+}
+
+.error {
+    color: #ef4444;
 }
