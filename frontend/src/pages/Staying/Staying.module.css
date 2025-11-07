@@ -1,14 +1,15 @@
 .container {
     padding: 24px;
     font-family: 'Segoe UI', sans-serif;
-    background: #f9f9f9;
+    background: #0e141b;
     min-height: 100vh;
+    color: #e6eef6;
 }
 
 .title {
     font-size: 28px;
     font-weight: 600;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 20px;
 }
 
@@ -21,43 +22,49 @@
 
 .input {
     padding: 8px 12px;
-    border: 1px solid #ccc;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: #e6eef6;
     border-radius: 8px;
     font-size: 14px;
     outline: none;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, background 0.2s;
 }
 
 .input:focus {
-    border-color: #3498db;
+    border-color: #60a5fa;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .button {
-    background: #3498db;
+    background: #2563eb;
     color: #fff;
     border: none;
     padding: 8px 14px;
     border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
-    transition: background 0.2s;
+    transition: background 0.2s, transform 0.1s;
 }
 
 .button:hover {
-    background: #2980b9;
+    background: #1d4ed8;
+    transform: scale(1.03);
 }
 
 .card {
-    background: #fff;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
     padding: 16px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     overflow-x: auto;
 }
 
 .table {
     width: 100%;
     border-collapse: collapse;
+    color: #e6eef6;
 }
 
 .table th, .table td {
@@ -67,13 +74,13 @@
 }
 
 .table th {
-    background: #f5f5f5;
+    background: rgba(255,255,255,0.08);
     font-weight: 600;
-    color: #555;
+    color: #cbd5e1;
 }
 
 .table tr:nth-child(even) {
-    background: #fafafa;
+    background: rgba(255,255,255,0.03);
 }
 
 .status {
@@ -84,8 +91,15 @@
     text-transform: capitalize;
 }
 
-.status.booked { background: #ffe6b3; color: #b37400; }
-.status.staying { background: #d9f2d9; color: #267326; }
+.status.booked {
+    background: rgba(255, 196, 87, 0.2);
+    color: #ffb74d;
+}
+
+.status.staying {
+    background: rgba(46, 204, 113, 0.2);
+    color: #2ecc71;
+}
 
 .actionBtn {
     padding: 6px 12px;
@@ -93,12 +107,57 @@
     border-radius: 6px;
     cursor: pointer;
     font-weight: 500;
-    transition: background 0.2s;
+    transition: background 0.2s, transform 0.1s;
     margin-right: 6px;
 }
 
-.actionBtn.checkin { background: #2ecc71; color: white; }
-.actionBtn.checkin:hover { background: #27ae60; }
+.actionBtn.checkin {
+    background: #2ecc71;
+    color: white;
+}
 
-.actionBtn.checkout { background: #e74c3c; color: white; }
-.actionBtn.checkout:hover { background: #c0392b; }
+.actionBtn.checkin:hover {
+    background: #27ae60;
+    transform: scale(1.05);
+}
+
+.actionBtn.checkout {
+    background: #e74c3c;
+    color: white;
+}
+
+.actionBtn.checkout:hover {
+    background: #c0392b;
+    transform: scale(1.05);
+}
+
+/* 🌙 Date Picker */
+.datePicker {
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 6px 10px;
+    margin-right: 8px;
+}
+
+.icon {
+    color: #60a5fa;
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+.dateInput {
+    background: transparent;
+    border: none;
+    color: #e6eef6;
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+}
+
+.dateInput::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
