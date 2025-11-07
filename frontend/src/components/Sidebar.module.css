@@ -1,76 +1,119 @@
 .sidebar {
+    width: 240px;
+    background: #0f172a;
+    color: #e2e8f0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s ease, background 0.3s ease;
+    box-shadow: 4px 0 12px rgba(0, 0, 0, 0.4);
     position: fixed;
     top: 0;
     left: 0;
-    height: 100vh;
-    width: 220px;
-    background-color: #1f2937;
-    color: #f9fafb;
-    display: flex;
-    flex-direction: column;
-    transition: width 0.3s;
     z-index: 100;
 }
 
 .collapsed {
-    width: 60px;
+    width: 80px;
 }
 
 .top {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 16px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 18px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .brand {
-    font-weight: bold;
-    font-size: 18px;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #60a5fa;
+    transition: opacity 0.3s ease;
 }
 
 .toggleBtn {
     background: none;
     border: none;
-    color: #f9fafb;
-    font-size: 20px;
+    color: #94a3b8;
     cursor: pointer;
+    font-size: 22px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.toggleBtn:hover {
+    color: #f8fafc;
+    transform: rotate(90deg);
 }
 
 .nav {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
+    margin-top: 12px;
 }
 
 .nav a {
     display: flex;
     align-items: center;
-    padding: 12px 16px;
-    color: #f9fafb;
-    text-decoration: none;
+    gap: 12px;
+    padding: 14px 18px;
+    color: #cbd5e1;
     font-size: 15px;
-    transition: background 0.2s;
+    text-decoration: none;
+    border-radius: 10px;
+    margin: 4px 10px;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
 }
 
 .nav a:hover {
-    background-color: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.08);
+    color: #f1f5f9;
+    transform: translateX(4px);
 }
-
-.nav a .icon {
-    font-size: 20px;
-    margin-right: 12px;
-}
-
-.collapsed .nav a .icon {
-    margin-right: 0;
-    text-align: center;
-    width: 100%;
-}
-
-.nav a .label {}
 
 .active {
-    background-color: #2563eb;
-    border-radius: 6px;
+    background: #1e293b;
+    color: #60a5fa !important;
+    font-weight: 600;
+    box-shadow: inset 2px 0 0 #60a5fa;
+}
+
+.icon {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+}
+
+.label {
+    transition: opacity 0.3s ease;
+}
+
+.collapsed .label {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        height: 100vh;
+        z-index: 200;
+        width: 200px;
+    }
+
+    .collapsed {
+        width: 70px;
+    }
+
+    .nav a {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .brand {
+        font-size: 18px;
+    }
 }
