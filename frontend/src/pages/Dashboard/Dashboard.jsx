@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { dashboardApi } from '../../api/dashboardApi.js';
 import styles from './Dashboard.module.css';
-import { FiUsers, FiHome, FiCheckCircle, FiClock, FiShoppingCart, FiActivity } from 'react-icons/fi';
+import { FiUsers, FiHome, FiCheckCircle, FiClock, FiShoppingCart } from 'react-icons/fi';
 
 export default function Dashboard() {
     const [data, setData] = useState(null);
@@ -33,7 +33,19 @@ export default function Dashboard() {
 
     return (
         <div className={styles.container}>
+            
+            {/* 🏨 Cover Photo Section */}
+            <div className={styles.coverSection}>
+                <img src="/luxnest.jpg" alt="Hotel Cover" className={styles.coverImage} />
+                <div className={styles.overlay}>
+                    <h1 className={styles.welcomeText}>Welcome to <span>LuxNest</span></h1>
+                    <p className={styles.subtitle}>Your comfort, our priority 🏨</p>
+                </div>
+            </div>
+
+            {/* 📊 Dashboard Overview Section */}
             <h2 className={styles.title}>📊 Dashboard Overview</h2>
+
             <div className={styles.grid}>
                 {cards.map((c, idx) => (
                     <div key={idx} className={styles.card} style={{ borderLeftColor: c.color }}>

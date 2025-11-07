@@ -16,11 +16,35 @@
 }
 
 .title {
-    font-size: 26px;
-    font-weight: 600;
-    color: #f1f5f9;
+    font-size: 28px;
+    font-weight: 700;
     text-align: center;
+    margin-bottom: 32px;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+    letter-spacing: 1px;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #38bdf8, #818cf8, #38bdf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
+
+.title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 100%;  /* 🔹 underline বড় করা হয়েছে */
+    height: 4px; /* 🔹 একটু মোটা underline */
+    border-radius: 4px;
+    background: linear-gradient(90deg, #38bdf8, #818cf8, #38bdf8);
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+}
+
 
 .addBtn {
     background: linear-gradient(135deg, #10b981, #059669);

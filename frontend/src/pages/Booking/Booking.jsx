@@ -58,7 +58,10 @@ export default function Booking() {
 
     return (
         <div className={styles.container}>
-            <h2 className={styles.header}>📅 Booking</h2>
+            <h2 className={styles.header}>
+  <span className={styles.emoji}>📅</span> Booking
+</h2>
+
 
             <div className={styles.actions}>
                 <button className={styles.button} onClick={() => setShowForm(true)}>+ New Booking</button>

@@ -9,11 +9,43 @@
 }
 
 .header {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 700;
-    margin-bottom: 18px;
-    color: #dbeafe;
     text-align: center;
+    margin-bottom: 28px;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+    letter-spacing: 1px;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+
+    /* gradient text */
+    background: linear-gradient(90deg, #38bdf8, #818cf8, #38bdf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* keep emoji raw color */
+.header .emoji {
+    -webkit-text-fill-color: initial !important;
+    background: none !important;
+    display: inline;
+    color: inherit;
+    margin-right: 6px;
+}
+
+/* underline */
+.header::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 4px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #38bdf8, #818cf8, #38bdf8);
 }
 
 .actions {

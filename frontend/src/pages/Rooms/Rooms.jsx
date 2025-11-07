@@ -3,7 +3,7 @@ import { roomsApi } from '../../api/roomsApi';
 import styles from './Rooms.module.css';
 import RoomForm from './RoomForm';
 import RoomDetail from './RoomDetail';
-import { FiEdit, FiTrash2, FiInfo } from 'react-icons/fi';
+import { FiEdit, FiTrash2, FiInfo } from 'react-icons/fi'; // 🗑️ Removed FiHome
 
 export default function Rooms() {
     const [rooms, setRooms] = useState([]);
@@ -63,18 +63,34 @@ export default function Rooms() {
 
     return (
         <div className={styles.container}>
-            <h2 className={styles.header}>Rooms</h2>
+            {/* 🏠 Emoji Title (centered + styled via CSS) */}
+            <div className={styles.header}>
+                <h2 className={styles.title}>🏠 Rooms</h2>
+            </div>
 
             <div className={styles.filters}>
-                <input className={styles.input} placeholder="Search room number or notes" value={search} onChange={e => setSearch(e.target.value)} />
-                <select className={styles.input} value={status} onChange={e => setStatus(e.target.value)}>
+                <input
+                    className={styles.input}
+                    placeholder="Search room number or notes"
+                    value={search}
+                    onChange={e => setSearch(e.target.value)}
+                />
+                <select
+                    className={styles.input}
+                    value={status}
+                    onChange={e => setStatus(e.target.value)}
+                >
                     <option value="">All status</option>
                     <option value="available">available</option>
                     <option value="booked">booked</option>
                     <option value="occupied">occupied</option>
                     <option value="maintenance">maintenance</option>
                 </select>
-                <select className={styles.input} value={type} onChange={e => setType(e.target.value)}>
+                <select
+                    className={styles.input}
+                    value={type}
+                    onChange={e => setType(e.target.value)}
+                >
                     <option value="">All types</option>
                     <option value="single">single</option>
                     <option value="double">double</option>
@@ -82,7 +98,12 @@ export default function Rooms() {
                 </select>
                 <button className={styles.button} onClick={load}>Search</button>
                 <div className={styles.flexSpacer} />
-                <button className={styles.button} onClick={() => { setEditing(null); setShowForm(true); }}>+ New Room</button>
+                <button
+                    className={styles.button}
+                    onClick={() => { setEditing(null); setShowForm(true); }}
+                >
+                    + New Room
+                </button>
             </div>
 
             {loading ? <div>Loading...</div> : (

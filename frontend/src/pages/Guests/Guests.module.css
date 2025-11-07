@@ -1,20 +1,35 @@
 /* ====== Page Layout ====== */
-.page {
-    padding: 24px;
-    font-family: 'Inter', 'Segoe UI', sans-serif;
-    background: #0f172a;
-    color: #e0e0e0;
-    min-height: 100vh;
+.pageTitle {
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 32px;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+    letter-spacing: 1.2px;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #38bdf8, #818cf8, #38bdf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.pageTitle {
-    font-size: 28px;
-    font-weight: 600;
-    color: #ffffff;
-    margin-bottom: 20px;
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.15);
-    text-align: center;
+.pageTitle::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 100%; /* 🔹 underline আগের থেকে বড় */
+    height: 4px; /* 🔹 thickness একটু বাড়ানো */
+    border-radius: 4px;
+    background: linear-gradient(90deg, #38bdf8, #818cf8, #38bdf8);
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
 }
+
+
 
 /* ====== Controls Bar ====== */
 .controls {
@@ -25,7 +40,6 @@
     background: rgba(255, 255, 255, 0.05);
     padding: 16px;
     border-radius: 12px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
     margin-bottom: 20px;
 }
 
@@ -36,54 +50,12 @@
     border-radius: 8px;
     padding: 10px 12px;
     outline: none;
-    transition: border 0.2s, background 0.2s;
 }
 
 .input:focus {
     border-color: #00bcd4;
-    background: #2a303b;
 }
 
-.primaryBtn,
-.successBtn,
-.cancelBtn {
-    border: none;
-    padding: 8px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: transform 0.2s, background 0.2s;
-}
-
-.primaryBtn {
-    background: #007bff;
-    color: white;
-}
-
-.primaryBtn:hover {
-    background: #0062cc;
-    transform: translateY(-2px);
-}
-
-.successBtn {
-    background: #28a745;
-    color: white;
-}
-
-.successBtn:hover {
-    background: #218838;
-    transform: translateY(-2px);
-}
-
-.cancelBtn {
-    background: #6c757d;
-    color: white;
-}
-
-.cancelBtn:hover {
-    background: #5a6268;
-    transform: translateY(-2px);
-}
 
 /* ====== Date Filter ====== */
 .dateFilter {
@@ -100,7 +72,6 @@
 .calendarIcon {
     position: absolute;
     left: 10px;
-    font-size: 18px;
     color: #00bcd4;
 }
 
@@ -110,207 +81,134 @@
     color: #e0e0e0;
     padding: 8px;
     outline: none;
-    cursor: pointer;
 }
 
 .clearDateBtn {
     position: absolute;
-    right: 6px;
+    right: 8px;
     background: none;
     border: none;
-    color: #aaa;
     cursor: pointer;
-    font-size: 14px;
-    transition: color 0.2s;
+    color: #bbb;
 }
 
-.clearDateBtn:hover {
-    color: #fff;
+
+/* ====== Buttons ====== */
+.primaryBtn,
+.successBtn,
+.cancelBtn {
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
 }
 
-/* ====== List Table ====== */
+.primaryBtn { background: #007bff; color: white; }
+.successBtn { background: #28a745; color: white; }
+.cancelBtn { background: #6c757d; color: white; }
+
+
+
+/* =========================================================
+   ✅ CARD STYLE TABLE ROWS (MAIN UPGRADE)
+   ========================================================= */
+
 .listContainer {
     background: rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    border-radius: 14px;
+    padding: 14px;
     overflow-x: auto;
-    animation: fadeIn 0.4s ease;
 }
 
 .listTable {
     width: 100%;
-    border-collapse: collapse;
-    min-width: 800px;
+    border-collapse: separate;
+    border-spacing: 0 12px;   /* ✅ Row gap */
 }
 
-.listTable th,
-.listTable td {
-    padding: 12px 14px;
-    border-bottom: 1px solid #2e3440;
-    text-align: left;
-}
-
-.listTable th {
-    background: #222831;
+.listTable thead th {
+    background: #1e293b;
+    padding: 12px;
     color: #00bcd4;
-    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
 }
 
-.listTable tr:hover {
-    background: rgba(255, 255, 255, 0.05);
-    transition: background 0.2s;
+.cardRow {
+    background: #1e293b;
+    border-radius: 12px;
+    box-shadow: 0 0 0 rgba(0,0,0,0);
+    transition: 0.20s ease;
 }
+
+.cardRow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 255, 255, 0.25);
+    background: #243447;
+}
+
+.cardCell {
+    padding: 16px 14px;
+    border-bottom: none !important;
+}
+
 
 /* ====== Status Pills ====== */
 .status {
     padding: 4px 10px;
     border-radius: 10px;
     font-size: 12px;
-    font-weight: 500;
-    text-transform: capitalize;
 }
 
-.booked {
-    background: #665c00;
-    color: #ffe27a;
-}
+.booked { background: #665c00; color: #ffe27a; }
+.staying { background: #145c32; color: #6af58f; }
+.checked-out { background: #3a3a3a; color: #ccc; }
 
-.staying {
-    background: #145c32;
-    color: #6af58f;
-}
-
-.checked-out {
-    background: #3a3a3a;
-    color: #ccc;
-}
 
 /* ====== Icons ====== */
 .icon {
-    font-size: 18px;
-    color: #00bcd4;
     cursor: pointer;
-    margin-right: 8px;
-    transition: transform 0.2s, color 0.2s;
+    margin-right: 10px;
+    transition: 0.2s;
 }
 
 .icon:hover {
     color: #03e9f4;
-    transform: scale(1.1);
+    transform: scale(1.15);
 }
 
-/* ====== Modal Styling ====== */
+
+/* ====== Modal ====== */
 .modal {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0,0,0,0.55);
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 100;
-    animation: fadeIn 0.3s ease;
-    backdrop-filter: blur(4px);
 }
 
 .modalContent {
     background: #1e2129;
-    color: #e0e0e0;
     padding: 24px;
-    border-radius: 12px;
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
-    width: clamp(400px, 50%, 800px);
-    max-height: 90vh;
-    overflow-y: auto;
-    animation: scaleUp 0.3s ease;
+    border-radius: 14px;
+    width: clamp(350px, 50%, 750px);
 }
 
-.modalContent h3,
-.modalContent h4 {
-    color: #00bcd4;
-}
 
-.formRow {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 12px;
-}
-
-.formRow label {
-    margin-bottom: 6px;
-    font-weight: 500;
-    color: #ccc;
-}
-
-.modalActions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 16px;
-}
-
-/* ====== Inner Table for Details ====== */
+/* ====== Details Table ====== */
 .table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 12px;
-}
-
-.table th,
-.table td {
-    padding: 10px;
-    border-bottom: 1px solid #333;
 }
 
 .table th {
-    color: #00bcd4;
     background: #222831;
-    font-weight: 600;
+    padding: 10px;
+    color: #00bcd4;
 }
 
-.table tr:hover {
-    background: rgba(255, 255, 255, 0.05);
-}
-
-/* ====== Animations ====== */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes scaleUp {
-    from {
-        transform: scale(0.9);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-/* ====== Responsive ====== */
-@media (max-width: 768px) {
-    .controls {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .modalContent {
-        width: 90%;
-        max-height: 85vh;
-    }
-
-    .listTable {
-        font-size: 14px;
-    }
-
-    .pageTitle {
-        font-size: 22px;
-    }
+.table td {
+    padding: 10px;
+    border-bottom: 1px solid #333;
 }

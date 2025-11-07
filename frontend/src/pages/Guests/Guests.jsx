@@ -13,7 +13,6 @@ export default function Guests() {
     const [showForm, setShowForm] = useState(false);
     const [detail, setDetail] = useState(null);
 
-    // ✅ Load guests and their bookings
     async function load() {
         setLoading(true);
         try {
@@ -23,31 +22,26 @@ export default function Guests() {
 
             const data = await api.fetchCustomers(q);
 
-            // Fetch bookings for each customer
             const withBookings = await Promise.all(
                 data.map(async (c) => {
                     try {
                         const detail = await api.getCustomer(c.id);
                         return { ...c, bookings: detail.bookings || [] };
-                    } catch (err) {
-                        console.error(`Failed to fetch bookings for ${c.id}`, err);
+                    } catch {
                         return { ...c, bookings: [] };
                     }
                 })
             );
 
             setCustomers(withBookings);
-        } catch (err) {
-            console.error(err);
+        } catch {
             alert("Error fetching customers");
         } finally {
             setLoading(false);
         }
     }
 
-    useEffect(() => {
-        load();
-    }, []);
+    useEffect(() => { load(); }, []);
 
     function openNew() {
         setEditing(null);
@@ -79,8 +73,7 @@ export default function Guests() {
             else await api.createCustomer(data);
             setShowForm(false);
             await load();
-        } catch (err) {
-            console.error(err);
+        } catch {
             alert("Error saving");
         }
     }
@@ -89,13 +82,11 @@ export default function Guests() {
         try {
             const d = await api.getCustomer(id);
             setDetail(d);
-        } catch (err) {
-            console.error(err);
+        } catch {
             alert("Error fetching details");
         }
     }
 
-    // ✅ Helper function to format ISO date to "YYYY-MM-DD"
     const isoToDateOnly = (dateStr) => {
         if (!dateStr) return "";
         const d = new Date(dateStr);
@@ -103,10 +94,9 @@ export default function Guests() {
         return d.toISOString().slice(0, 10);
     };
 
-    // ✅ Filter guests by date (checks bookings)
     const filteredCustomers = customers.filter((c) => {
         if (!filterDate) return true;
-        if (!c.bookings || c.bookings.length === 0) return false;
+        if (!c.bookings?.length) return false;
 
         return c.bookings.some((b) => isoToDateOnly(b.start_date) === filterDate);
     });
@@ -115,7 +105,7 @@ export default function Guests() {
         <div className={styles.page}>
             <h2 className={styles.pageTitle}>👥 Guests</h2>
 
-            {/* Controls */}
+            {/* Filters + Controls */}
             <div className={styles.controls}>
                 <input
                     className={styles.input}
@@ -123,6 +113,7 @@ export default function Guests() {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                 />
+
                 <select
                     className={styles.input}
                     value={statusFilter}
@@ -134,7 +125,7 @@ export default function Guests() {
                     <option value="checked-out">Checked-out</option>
                 </select>
 
-                {/* Date Filter */}
+                {/* Date filter */}
                 <div className={styles.dateFilter}>
                     <FiCalendar className={styles.calendarIcon} />
                     <input
@@ -156,13 +147,15 @@ export default function Guests() {
                 <button className={styles.primaryBtn} onClick={load}>
                     Search
                 </button>
+
                 <div style={{ flex: 1 }} />
+
                 <button className={styles.successBtn} onClick={openNew}>
                     + New Guest
                 </button>
             </div>
 
-            {/* List View */}
+            {/* List */}
             {loading ? (
                 <div>Loading...</div>
             ) : (
@@ -179,6 +172,7 @@ export default function Guests() {
                             <th>Actions</th>
                         </tr>
                         </thead>
+
                         <tbody>
                         {filteredCustomers.length === 0 ? (
                             <tr>
@@ -188,36 +182,33 @@ export default function Guests() {
                             </tr>
                         ) : (
                             filteredCustomers.map((c) => (
-                                <tr key={c.id}>
-                                    <td>{c.name}</td>
-                                    <td>{c.email}</td>
-                                    <td>{c.phone}</td>
-                                    <td>
-                      <span className={`${styles.status} ${styles[c.status]}`}>
-                        {c.status}
-                      </span>
+                                <tr key={c.id} className={styles.cardRow}>
+                                    <td className={styles.cardCell}>{c.name}</td>
+                                    <td className={styles.cardCell}>{c.email}</td>
+                                    <td className={styles.cardCell}>{c.phone}</td>
+                                    <td className={styles.cardCell}>
+                                            <span className={`${styles.status} ${styles[c.status]}`}>
+                                                {c.status}
+                                            </span>
                                     </td>
-                                    <td>
-                                        {c.bookings && c.bookings.length > 0
+                                    <td className={styles.cardCell}>
+                                        {c.bookings?.length
                                             ? isoToDateOnly(c.bookings[0].start_date)
                                             : "N/A"}
                                     </td>
-                                    <td>{c.note || "-"}</td>
-                                    <td>
-                                        <FiInfo
-                                            className={styles.icon}
-                                            title="Details"
-                                            onClick={() => viewDetails(c.id)}
+                                    <td className={styles.cardCell}>{c.note || "-"}</td>
+                                    <td className={styles.cardCell}>
+                                        <FiInfo className={styles.icon}
+                                                title="Details"
+                                                onClick={() => viewDetails(c.id)}
                                         />
-                                        <FiEdit
-                                            className={styles.icon}
-                                            title="Edit"
-                                            onClick={() => openEdit(c)}
+                                        <FiEdit className={styles.icon}
+                                                title="Edit"
+                                                onClick={() => openEdit(c)}
                                         />
-                                        <FiTrash2
-                                            className={styles.icon}
-                                            title="Delete"
-                                            onClick={() => handleDelete(c.id)}
+                                        <FiTrash2 className={styles.icon}
+                                                  title="Delete"
+                                                  onClick={() => handleDelete(c.id)}
                                         />
                                     </td>
                                 </tr>
@@ -228,7 +219,7 @@ export default function Guests() {
                 </div>
             )}
 
-            {/* Form Modal */}
+            {/* Add/Edit Modal */}
             {showForm && (
                 <div className={styles.modal}>
                     <div className={styles.modalContent}>
@@ -243,6 +234,7 @@ export default function Guests() {
                                     required
                                 />
                             </div>
+
                             <div className={styles.formRow}>
                                 <label>Email</label>
                                 <input
@@ -251,6 +243,7 @@ export default function Guests() {
                                     className={styles.input}
                                 />
                             </div>
+
                             <div className={styles.formRow}>
                                 <label>Phone</label>
                                 <input
@@ -259,6 +252,7 @@ export default function Guests() {
                                     className={styles.input}
                                 />
                             </div>
+
                             <div className={styles.formRow}>
                                 <label>Note</label>
                                 <textarea
@@ -267,6 +261,7 @@ export default function Guests() {
                                     className={styles.input}
                                 />
                             </div>
+
                             <div className={styles.modalActions}>
                                 <button
                                     type="button"
@@ -275,6 +270,7 @@ export default function Guests() {
                                 >
                                     Cancel
                                 </button>
+
                                 <button type="submit" className={styles.primaryBtn}>
                                     Save
                                 </button>
@@ -284,16 +280,16 @@ export default function Guests() {
                 </div>
             )}
 
-            {/* Detail Modal */}
+            {/* Details Modal */}
             {detail && (
                 <div className={styles.modal}>
                     <div className={styles.modalContent}>
                         <h3>Customer Detail</h3>
-                        <p>
-                            <strong>{detail.name}</strong> ({detail.email})
-                        </p>
+
+                        <p><strong>{detail.name}</strong> ({detail.email})</p>
                         <p>Phone: {detail.phone}</p>
                         {detail.note && <p>Note: {detail.note}</p>}
+
                         <h4>Bookings</h4>
                         <table className={styles.table}>
                             <thead>
@@ -314,9 +310,8 @@ export default function Guests() {
                                 detail.bookings.map((b) => (
                                     <tr key={b.id}>
                                         <td>{b.id}</td>
-                                        <td>
-                                            {b.room_number} ({b.room_type})
-                                        </td>
+                                        <td>{b.room_number} ({b.room_type})</td>
+
                                         <td>
                                             {new Date(b.start_date).toLocaleString("en-US", {
                                                 year: "numeric",
@@ -326,6 +321,7 @@ export default function Guests() {
                                                 minute: "2-digit",
                                             })}
                                         </td>
+
                                         <td>
                                             {new Date(b.end_date).toLocaleString("en-US", {
                                                 year: "numeric",
@@ -335,12 +331,14 @@ export default function Guests() {
                                                 minute: "2-digit",
                                             })}
                                         </td>
+
                                         <td>{b.status}</td>
                                     </tr>
                                 ))
                             )}
                             </tbody>
                         </table>
+
                         <div className={styles.modalActions}>
                             <button
                                 className={styles.cancelBtn}

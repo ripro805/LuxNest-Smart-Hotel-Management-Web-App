@@ -56,7 +56,10 @@ export default function Staying() {
 
     return (
         <div className={styles.container}>
-            <h2 className={styles.title}>🏨 Staying</h2>
+               <h2 className={styles.title}>
+                <span className={styles.emoji}>🏨</span> Staying
+            </h2>
+
 
             <div className={styles.controls}>
                 <input
