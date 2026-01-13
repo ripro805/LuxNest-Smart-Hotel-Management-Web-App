@@ -10,7 +10,14 @@ const bookingsRouter = require('./routes/bookings');
 const dashboardRouter = require('./routes/dashboard');
 
 const app = express();
-app.use(cors());
+
+// CORS configuration
+const corsOptions = {
+    origin: process.env.FRONTEND_URL || '*',
+    credentials: true,
+    optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // API routes
@@ -24,9 +31,11 @@ app.use('/api/dashboard', dashboardRouter);
 app.get('/', (req, res) => res.send({ ok: true, message: "Hotel Management API" }));
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
-app.listen(PORT, () => console.log(`✅ Customer: http://localhost:5000/api/customers`));
-app.listen(PORT, () => console.log(`✅ Staffs: http://localhost:5000/api/staffs`));
-app.listen(PORT, () => console.log(`✅ Rooms: http://localhost:5000/api/rooms`));
-app.listen(PORT, () => console.log(`✅ Bookings: http://localhost:5000/api/bookings`));
-app.listen(PORT, () => console.log(`✅ Dashboard: http://localhost:5000/api/dashboard`));
+app.listen(PORT, () => {
+    console.log(`✅ Server running on port ${PORT}`);
+    console.log(`✅ Customer: http://localhost:${PORT}/api/customers`);
+    console.log(`✅ Staffs: http://localhost:${PORT}/api/staffs`);
+    console.log(`✅ Rooms: http://localhost:${PORT}/api/rooms`);
+    console.log(`✅ Bookings: http://localhost:${PORT}/api/bookings`);
+    console.log(`✅ Dashboard: http://localhost:${PORT}/api/dashboard`);
+});
