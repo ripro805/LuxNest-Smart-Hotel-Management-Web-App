@@ -1,7 +1,6 @@
 -- init_db.sql
-DROP DATABASE IF EXISTS luxnest;
-CREATE DATABASE luxnest CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE luxnest;
+-- Railway database name is 'railway', so we use that
+USE railway;
 
 -- customers
 CREATE TABLE customers (
