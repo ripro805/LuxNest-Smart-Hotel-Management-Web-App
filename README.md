@@ -316,17 +316,17 @@ For detailed deployment instructions (in Bengali), see [DEPLOYMENT.md](./DEPLOYM
 ### 🏠 Dashboard
 The main dashboard provides a comprehensive overview of hotel operations with real-time statistics.
 
-![Dashboard](./screenshots/Dashboard.png)
+![Dashboard](./screenshots/dashboard.png)
 
 ### 🛏️ Room Management
 Manage all rooms with status tracking, pricing, and availability management.
 
-![Rooms](./screenshots/Rooms.png)
+![Rooms](./screenshots/rooms.png)
 
 ### 📅 Booking System
 Streamlined booking process with available room listings and reservation management.
 
-![Booking](./screenshots/Booking.png)
+![Bookings](./screenshots/booking.png)
 
 ---
 
