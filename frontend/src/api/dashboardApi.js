@@ -1,5 +1,5 @@
 // location: frontend/src/api/dashboardApi.js
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 async function request(path, opts = {}) {
     const res = await fetch(`${API_BASE}${path}`, {

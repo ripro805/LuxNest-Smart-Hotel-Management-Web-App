@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:5000/api/staffs";
+const API_BASE_URL = `${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/staffs`;
 
 // সব staff ডিটেইলস দেখার জন্য
 export async function getStaffs() {
