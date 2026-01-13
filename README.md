@@ -313,15 +313,19 @@ For detailed deployment instructions (in Bengali), see [DEPLOYMENT.md](./DEPLOYM
 
 ## 📸 Screenshots
 
-*(Add screenshots of your application here)*
+### 🏠 Dashboard
+The main dashboard provides a comprehensive overview of hotel operations with real-time statistics.
 
-### Dashboard
 ![Dashboard](./screenshots/dashboard.png)
 
-### Room Management
+### 🛏️ Room Management
+Manage all rooms with status tracking, pricing, and availability management.
+
 ![Rooms](./screenshots/rooms.png)
 
-### Booking System
+### 📅 Booking System
+Streamlined booking process with available room listings and reservation management.
+
 ![Bookings](./screenshots/bookings.png)
 
 ---
