@@ -77,17 +77,17 @@
 ### Backend
 - **Node.js** - Runtime environment
 - **Express** (v5.1.0) - Web framework
-- **MySQL2** (v3.15.0) - Database driver
+- **pg** (v8.x) - PostgreSQL driver
 - **CORS** (v2.8.5) - Cross-origin resource sharing
 - **dotenv** (v17.2.2) - Environment configuration
 
 ### Database
-- **MySQL** - Relational database
+- **PostgreSQL (Neon)** - Relational database
 
 ### Deployment
 - **Frontend**: Vercel
 - **Backend**: Railway
-- **Database**: Railway MySQL
+- **Database**: Neon PostgreSQL
 
 ---
 
@@ -147,7 +147,7 @@ LuxNest/
 ### Prerequisites
 
 - **Node.js** (v16 or higher)
-- **MySQL** (v8.0 or higher)
+- **PostgreSQL/Neon** connection
 - **Git**
 
 ### Installation
@@ -158,16 +158,13 @@ LuxNest/
    cd LuxNest-Smart-Hotel-Management-Web-App
    ```
 
-2. **Setup Database**
+2. **Setup Database (Neon/PostgreSQL)**
+   - Create a Neon project and copy `DATABASE_URL`
+   - Run PostgreSQL schema:
    ```bash
-   # Create database
-   mysql -u root -p
-   CREATE DATABASE hotel_management;
-   exit;
-
-   # Import schema and data
-   mysql -u root -p hotel_management < database/hotel_management.sql
+   psql "$DATABASE_URL" -f database/hotel_management_postgres.sql
    ```
+   - For migrating old MySQL data, follow: `NEON_MIGRATION.md`
 
 3. **Setup Backend**
    ```bash
@@ -182,11 +179,7 @@ LuxNest/
 
    `.env` file:
    ```env
-   DB_HOST=localhost
-   DB_USER=root
-   DB_PASSWORD=your_password
-   DB_NAME=hotel_management
-   DB_PORT=3306
+   DATABASE_URL=postgresql://username:password@ep-xxx.us-east-1.aws.neon.tech/neondb?sslmode=require
    PORT=5000
    NODE_ENV=development
    FRONTEND_URL=http://localhost:5173
@@ -231,11 +224,7 @@ LuxNest/
 ### Backend (.env)
 | Variable | Description | Example |
 |----------|-------------|---------|
-| `DB_HOST` | MySQL host | `localhost` |
-| `DB_USER` | Database user | `root` |
-| `DB_PASSWORD` | Database password | `your_password` |
-| `DB_NAME` | Database name | `hotel_management` |
-| `DB_PORT` | MySQL port | `3306` |
+| `DATABASE_URL` | Neon/PostgreSQL connection string | `postgresql://...` |
 | `PORT` | Server port | `5000` |
 | `NODE_ENV` | Environment | `development` |
 | `FRONTEND_URL` | Frontend URL for CORS | `http://localhost:5173` |
@@ -252,7 +241,7 @@ LuxNest/
 ### Deployed Services
 - **Frontend**: Vercel
 - **Backend**: Railway
-- **Database**: Railway MySQL
+- **Database**: Neon PostgreSQL
 
 ### Quick Deploy
 
@@ -265,13 +254,12 @@ For detailed deployment instructions (in Bengali), see [DEPLOYMENT.md](./DEPLOYM
 4. Add environment variable: `VITE_API_URL`
 5. Deploy
 
-#### Railway (Backend + Database)
-1. Create MySQL database on Railway
-2. Import `database/hotel_management.sql`
-3. Deploy backend from GitHub
+#### Railway + Neon
+1. Create Neon PostgreSQL database
+2. Import `database/hotel_management_postgres.sql` (or migrate old MySQL data with `NEON_MIGRATION.md`)
+3. Deploy backend from GitHub (Railway)
 4. Set root directory to `backend`
-5. Configure environment variables
-6. Link MySQL service
+5. Set `DATABASE_URL` in backend environment variables
 
 ---
 
