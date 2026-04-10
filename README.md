@@ -356,7 +356,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## ðŸ“ž Support
+##  Support
 
 If you have any questions or issues, please open an issue on [GitHub Issues](https://github.com/ripro805/LuxNest-Smart-Hotel-Management-Web-App/issues).
 
