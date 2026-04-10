@@ -1,18 +1,18 @@
-﻿# ðŸ¨ LuxNest - Smart Hotel Management Web App
+﻿# 🏨 LuxNest - Smart Hotel Management Web App
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge)](https://lux-nest-smart-hotel-management-web.vercel.app/)
 [![GitHub](https://img.shields.io/badge/GitHub-Repo-blue?style=for-the-badge&logo=github)](https://github.com/ripro805/LuxNest-Smart-Hotel-Management-Web-App)
 
 > A modern, full-stack hotel management system for managing rooms, bookings, guests, and staff operations with an intuitive dashboard.
 
-## ðŸŒ Live Demo
+## 🌐 Live Demo
 
 **Frontend**: [https://lux-nest-smart-hotel-management-web.vercel.app/](https://lux-nest-smart-hotel-management-web.vercel.app/)  
 **Backend API**: [https://luxnest-smart-hotel-management-web-app.onrender.com/](https://luxnest-smart-hotel-management-web-app.onrender.com/)
 
 ---
 
-## ðŸ“‹ Table of Contents
+## 📃 Table of Contents
 
 - [Features](#-features)
 - [Tech Stack](#-tech-stack)
@@ -27,45 +27,45 @@
 
 ---
 
-## âœ¨ Features
+## ✨ Features
 
-### ðŸ  Dashboard
+### 🏠 Dashboard
 - Real-time overview of hotel operations
 - Total rooms, bookings, and revenue statistics
 - Quick access to all management sections
 
-### ðŸ›ï¸ Room Management
+### 🛏️ Room Management
 - View all rooms with status (Available/Occupied/Maintenance)
 - Add, edit, and delete room information
 - Room type categorization (Single, Double, Suite, Deluxe)
 - Price management
 
-### ðŸ‘¥ Guest Management
+### 🧑‍💼 Guest Management
 - Complete guest directory
 - Add and manage customer information
 - View booking history per guest
 - Search and filter capabilities
 
-### ðŸ“… Booking Management
+### 📅 Booking Management
 - Create new bookings with room assignment
 - Check-in and check-out operations
 - View booking status (Confirmed, Checked-in, Checked-out, Cancelled)
 - Booking date tracking
 
-### ðŸ‘¨â€ðŸ’¼ Staff Management
+### 👨‍💼 Staff Management
 - Employee directory
 - Staff role assignment (Manager, Receptionist, Housekeeper, etc.)
 - Contact information management
 - Salary tracking
 
-### ðŸ¨ Currently Staying
+### 🏨 Currently Staying
 - Real-time view of current guests
 - Room occupancy status
 - Quick check-out functionality
 
 ---
 
-## ðŸ› ï¸ Tech Stack
+## 🛠️ Tech Stack
 
 ### Frontend
 - **React** (v19.1.1) - UI library
@@ -91,57 +91,57 @@
 
 ---
 
-## ðŸ“ Project Structure
+## 📁 Project Structure
 
 ```
 LuxNest/
-â”œâ”€â”€ backend/
-â”‚   â”œâ”€â”€ db.js                 # Database connection pool
-â”‚   â”œâ”€â”€ index.js              # Express server entry point
-â”‚   â”œâ”€â”€ package.json
-â”‚   â”œâ”€â”€ routes/
-â”‚   â”‚   â”œâ”€â”€ bookings.js       # Booking CRUD operations
-â”‚   â”‚   â”œâ”€â”€ customers.js      # Guest management
-â”‚   â”‚   â”œâ”€â”€ dashboard.js      # Dashboard statistics
-â”‚   â”‚   â”œâ”€â”€ rooms.js          # Room management
-â”‚   â”‚   â”œâ”€â”€ staffs.js         # Staff management
-â”‚   â”‚   â””â”€â”€ staying.js        # Current occupancy
-â”‚   â””â”€â”€ utils/
-â”‚       â””â”€â”€ helpers.js        # Utility functions
-â”œâ”€â”€ frontend/
-â”‚   â”œâ”€â”€ src/
-â”‚   â”‚   â”œâ”€â”€ api/              # API client modules
-â”‚   â”‚   â”‚   â”œâ”€â”€ api.js
-â”‚   â”‚   â”‚   â”œâ”€â”€ bookingsApi.js
-â”‚   â”‚   â”‚   â”œâ”€â”€ customersApi.js
-â”‚   â”‚   â”‚   â”œâ”€â”€ dashboardApi.js
-â”‚   â”‚   â”‚   â”œâ”€â”€ roomsApi.js
-â”‚   â”‚   â”‚   â”œâ”€â”€ staffsApi.js
-â”‚   â”‚   â”‚   â””â”€â”€ stayingApi.js
-â”‚   â”‚   â”œâ”€â”€ components/       # Reusable components
-â”‚   â”‚   â”‚   â”œâ”€â”€ Sidebar.jsx
-â”‚   â”‚   â”‚   â””â”€â”€ Topbar.jsx
-â”‚   â”‚   â”œâ”€â”€ pages/            # Page components
-â”‚   â”‚   â”‚   â”œâ”€â”€ Booking/
-â”‚   â”‚   â”‚   â”œâ”€â”€ Dashboard/
-â”‚   â”‚   â”‚   â”œâ”€â”€ Guests/
-â”‚   â”‚   â”‚   â”œâ”€â”€ Rooms/
-â”‚   â”‚   â”‚   â”œâ”€â”€ Staffs/
-â”‚   â”‚   â”‚   â””â”€â”€ Staying/
-â”‚   â”‚   â”œâ”€â”€ styles/           # Global styles
-â”‚   â”‚   â”œâ”€â”€ App.jsx
-â”‚   â”‚   â””â”€â”€ main.jsx
-â”‚   â”œâ”€â”€ package.json
-â”‚   â”œâ”€â”€ vite.config.js
-â”‚   â””â”€â”€ vercel.json           # Vercel SPA routing config
-â”œâ”€â”€ database/
-â”‚   â””â”€â”€ hotel_management.sql  # Database schema & seed data
-â””â”€â”€ README.md
+├── backend/
+│   ├── db.js                 # Database connection pool
+│   ├── index.js              # Express server entry point
+│   ├── package.json
+│   ├── routes/
+│   │   ├── bookings.js       # Booking CRUD operations
+│   │   ├── customers.js      # Guest management
+│   │   ├── dashboard.js      # Dashboard statistics
+│   │   ├── rooms.js          # Room management
+│   │   ├── staffs.js         # Staff management
+│   │   └── staying.js        # Current occupancy
+│   └── utils/
+│       └── helpers.js        # Utility functions
+├── frontend/
+│   ├── src/
+│   │   ├── api/              # API client modules
+│   │   │   ├── api.js
+│   │   │   ├── bookingsApi.js
+│   │   │   ├── customersApi.js
+│   │   │   ├── dashboardApi.js
+│   │   │   ├── roomsApi.js
+│   │   │   ├── staffsApi.js
+│   │   │   └── stayingApi.js
+│   │   ├── components/       # Reusable components
+│   │   │   ├── Sidebar.jsx
+│   │   │   └── Topbar.jsx
+│   │   ├── pages/            # Page components
+│   │   │   ├── Booking/
+│   │   │   ├── Dashboard/
+│   │   │   ├── Guests/
+│   │   │   ├── Rooms/
+│   │   │   ├── Staffs/
+│   │   │   └── Staying/
+│   │   ├── styles/           # Global styles
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   ├── package.json
+│   ├── vite.config.js
+│   └── vercel.json           # Vercel SPA routing config
+├── database/
+│   └── hotel_management.sql  # Database schema & seed data
+└── README.md
 ```
 
 ---
 
-## ðŸš€ Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 
@@ -218,7 +218,7 @@ LuxNest/
 
 ---
 
-## ðŸ” Environment Variables
+## 🔐 Environment Variables
 
 ### Backend (.env)
 | Variable | Description | Example |
@@ -235,7 +235,7 @@ LuxNest/
 
 ---
 
-## ðŸŒ Deployment
+## 🌍 Deployment
 
 ### Deployed Services
 - **Frontend**: Vercel
@@ -265,7 +265,7 @@ LuxNest/
 
 ---
 
-## ðŸ“¡ API Endpoints
+## 📡 API Endpoints
 
 ### Dashboard
 - `GET /api/dashboard` - Get overview statistics
@@ -301,26 +301,26 @@ LuxNest/
 
 ---
 
-## ðŸ“¸ Screenshots
+## 🖼️ Screenshots
 
-### ðŸ  Dashboard
+### 🏠 Dashboard
 The main dashboard provides a comprehensive overview of hotel operations with real-time statistics.
 
 ![Dashboard](./screenshots/Dashboard.png)
 
-### ðŸ›ï¸ Room Management
+### 🛏️ Room Management
 Manage all rooms with status tracking, pricing, and availability management.
 
 ![Rooms](./screenshots/Rooms.png)
 
-### ðŸ“… Booking System
+### 📅 Booking System
 Streamlined booking process with available room listings and reservation management.
 
 ![Bookings](./screenshots/Booking.png)
 
 ---
 
-## ðŸ¤ Contributing
+## 🙏 Contributing
 
 Contributions are welcome! Please follow these steps:
 
@@ -332,13 +332,13 @@ Contributions are welcome! Please follow these steps:
 
 ---
 
-## ðŸ“„ License
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## ðŸ‘¨â€ðŸ’» Author
+## 👨‍💻 Author
 
 **Rifat Pro**  
 - GitHub: [@ripro805](https://github.com/ripro805)
@@ -346,7 +346,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## ðŸ™ Acknowledgments
+## 🙏 Acknowledgments
 
 - React team for the amazing library
 - Express.js for the robust backend framework
@@ -362,6 +362,6 @@ If you have any questions or issues, please open an issue on [GitHub Issues](htt
 
 ---
 
-**Made with â¤ï¸ for Hotel Management**
+**Made with ❤️ for Hotel Management**
 
 
